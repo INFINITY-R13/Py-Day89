@@ -10,22 +10,28 @@
     <div class="container">
         <h1>📝 My Todo List</h1>
         
-        <form action="{{ url_for('add') }}" method="POST" class="add-form">
+        <form action="{{ url_for('add', filter=filter_type) }}" method="POST" class="add-form">
             <input type="text" name="task" placeholder="Add a new task..." required>
             <button type="submit">Add</button>
         </form>
+
+        <div class="filter-tabs">
+            <a href="{{ url_for('index', filter_type='all') }}" class="filter-tab {% if filter_type == 'all' %}active{% endif %}">All</a>
+            <a href="{{ url_for('index', filter_type='active') }}" class="filter-tab {% if filter_type == 'active' %}active{% endif %}">Active</a>
+            <a href="{{ url_for('index', filter_type='completed') }}" class="filter-tab {% if filter_type == 'completed' %}active{% endif %}">Completed</a>
+        </div>
 
         <div class="todo-list">
             {% if todos %}
                 {% for todo in todos %}
                 <div class="todo-item {% if todo.complete %}completed{% endif %}">
                     <div class="todo-content">
-                        <a href="{{ url_for('complete', id=todo.id) }}" class="checkbox">
+                        <a href="{{ url_for('complete', id=todo.id, filter=filter_type) }}" class="checkbox">
                             {% if todo.complete %}✓{% endif %}
                         </a>
                         <span class="task-text">{{ todo.task }}</span>
                     </div>
-                    <a href="{{ url_for('delete', id=todo.id) }}" class="delete-btn">🗑️</a>
+                    <a href="{{ url_for('delete', id=todo.id, filter=filter_type) }}" class="delete-btn">🗑️</a>
                 </div>
                 {% endfor %}
             {% else %}

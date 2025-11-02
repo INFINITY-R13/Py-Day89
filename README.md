@@ -7,8 +7,10 @@ A simple and elegant todo list web application built with Flask and SQLAlchemy.
 - Add new tasks
 - Mark tasks as complete/incomplete
 - Delete tasks
-- Clean, modern UI with gradient background
+- Filter tasks by All, Active, or Completed
+- Beautiful light pink theme with gradient background
 - SQLite database for persistent storage
+- Responsive and modern UI
 
 ## Installation
 
@@ -32,6 +34,8 @@ http://127.0.0.1:5000
 - Type a task in the input field and click "Add" to create a new todo
 - Click the circle checkbox to toggle task completion
 - Click the trash icon to delete a task
+- Use the filter tabs (All, Active, Completed) to view different task categories
+- Filter state is preserved when adding, completing, or deleting tasks
 
 ## Technologies Used
 
